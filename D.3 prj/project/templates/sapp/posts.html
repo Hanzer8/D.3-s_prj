@@ -1,0 +1,34 @@
+{% extends 'sapp/default.html' %}
+
+<!-- Название у нас будет products -->
+{% block title %}
+Posts
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим все товары -->
+{% block content %}
+<h1>Все посты</h1>
+<hr>
+{% if posts %}
+<table>
+    <tr>
+        <td>Заголовок</td>
+        <td>Дата публекации</td>
+        <td>Текст</td>
+    </tr>
+    {% for product in products %}
+    <tr>
+        <!-- Не забываем, что переменные в шаблоне ничем не отличаются
+         от переменных в Python. Здесь также можно получать доступ к
+         полям объекта модели. Например, здесь мы выводим имя,
+         в следующем столбце описание, и т.д.  -->
+        <td>{{ Post.title }}</td>
+        <td>{{ Post.datetime }}</td>
+        <td>{{ Post.text }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h2>Товаров нет!</h2>
+{% endif %}
+{% endblock content %}
