@@ -1,11 +1,11 @@
 {% extends 'sapp/default.html' %}
 
-<!-- Название у нас будет products -->
+{% load custom_filters.py %}
+
 {% block title %}
 Posts
 {% endblock title %}
 
-<!-- В контенте на странице мы выводим все товары -->
 {% block content %}
 <h1>Все посты</h1>
 <hr>
@@ -16,19 +16,15 @@ Posts
         <td>Дата публекации</td>
         <td>Текст</td>
     </tr>
-    {% for product in products %}
+    {% for post in posts %}
     <tr>
-        <!-- Не забываем, что переменные в шаблоне ничем не отличаются
-         от переменных в Python. Здесь также можно получать доступ к
-         полям объекта модели. Например, здесь мы выводим имя,
-         в следующем столбце описание, и т.д.  -->
-        <td>{{ Post.title }}</td>
-        <td>{{ Post.datetime }}</td>
-        <td>{{ Post.text }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.datetime }}</td>
+        <td>{{ post.text|truncatechars:20 }}</td>
     </tr>
     {% endfor %}
 </table>
 {% else %}
-<h2>Товаров нет!</h2>
+<h2>Постов нет!</h2>
 {% endif %}
 {% endblock content %}

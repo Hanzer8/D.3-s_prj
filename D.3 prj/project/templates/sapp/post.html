@@ -1,11 +1,10 @@
-{% extends 'flatpages/default.html' %}
+{% extends 'sapp/default.html' %}
 
-<!-- Название у нас будет Product -->
 {% block title %}
 Posts
 {% endblock title %}
 
-<!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
+
 {% block content %}
 <h1>{{ Posts }}</h1>
 {% endblock content %}
